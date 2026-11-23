@@ -17100,8 +17100,8 @@ input{font-family:Dirham,Onest,sans-serif}
 <div data-screen-label="Today · No insights yet" style="height:660px;flex:none;scroll-snap-align:start;border-radius:44px;overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;box-sizing:border-box;padding:28px 24px 150px;background:#ECE8F1 var(--a9) center/cover no-repeat">
 <div style="font:600 17px Dirham,Sora,sans-serif">Insights</div>
 <div style="flex:1;align-self:stretch;display:flex;flex-direction:column;justify-content:center;align-items:center">
-<div aria-label="Keep more, Know your money, Plan ahead, Split it" style="position:relative;height:128px;align-self:stretch">
-<sc-if value="{{ stackOn }}" hint-placeholder-val="{{ true }}"><div class="v8-st4" style="position:absolute;left:0;right:0;top:0px;z-index:1;display:flex;justify-content:center"><div style="height:32px;padding:0 14px 0 10px;border-radius:16px;background:#90C5FF;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#fff"><i class="ph-fill ph-drop" style="font-size:16px"></i>Keep more</div></div><div class="v8-st3" style="position:absolute;left:0;right:0;top:32px;z-index:2;display:flex;justify-content:center"><div style="height:32px;padding:0 14px 0 10px;border-radius:16px;background:#71B4FF;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#fff"><i class="ph-fill ph-eye" style="font-size:16px"></i>Know your money</div></div><div class="v8-st2" style="position:absolute;left:0;right:0;top:64px;z-index:3;display:flex;justify-content:center"><div style="height:32px;padding:0 14px 0 10px;border-radius:16px;background:#4AA0FF;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#fff"><i class="ph-fill ph-pencil-simple" style="font-size:16px"></i>Plan ahead</div></div><div class="v8-st1" style="position:absolute;left:0;right:0;top:96px;z-index:4;display:flex;justify-content:center"><div style="height:32px;padding:0 14px 0 10px;border-radius:16px;background:#337DFF;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#fff"><i class="ph-fill ph-squares-four" style="font-size:16px"></i>Split it</div></div></sc-if>
+<div aria-label="Keep more, Know your money, Plan ahead, Rewind" style="position:relative;height:128px;align-self:stretch">
+<sc-if value="{{ stackOn }}" hint-placeholder-val="{{ true }}"><div class="v8-st4" style="position:absolute;left:0;right:0;top:0px;z-index:1;display:flex;justify-content:center"><div style="height:32px;padding:0 14px 0 10px;border-radius:16px;background:#90C5FF;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#fff"><i class="ph-fill ph-drop" style="font-size:16px"></i>Keep more</div></div><div class="v8-st3" style="position:absolute;left:0;right:0;top:32px;z-index:2;display:flex;justify-content:center"><div style="height:32px;padding:0 14px 0 10px;border-radius:16px;background:#71B4FF;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#fff"><i class="ph-fill ph-eye" style="font-size:16px"></i>Know your money</div></div><div class="v8-st2" style="position:absolute;left:0;right:0;top:64px;z-index:3;display:flex;justify-content:center"><div style="height:32px;padding:0 14px 0 10px;border-radius:16px;background:#4AA0FF;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#fff"><i class="ph-fill ph-pencil-simple" style="font-size:16px"></i>Plan ahead</div></div><div class="v8-st1" style="position:absolute;left:0;right:0;top:96px;z-index:4;display:flex;justify-content:center"><div style="height:32px;padding:0 14px 0 10px;border-radius:16px;background:#337DFF;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#fff"><i class="ph-bold ph-clock-counter-clockwise" style="font-size:16px"></i>Rewind</div></div></sc-if>
 </div>
 <div style="font:500 28px/37px Dirham,Sora,sans-serif;text-align:center;text-wrap:balance;font-size:30px;line-height:38px;margin-top:40px">I’ll share what I notice about money here</div>
 <div style="font-size:16px;line-height:22px;text-align:center;margin-top:8px;text-wrap:balance">Add another bank account. The more I see, the more I can show you.</div>
@@ -17125,11 +17125,21 @@ input{font-family:Dirham,Onest,sans-serif}
 <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font-size:16px">{{ totalLabel }}</span><span sc-camel-on-click="{{ toDetails }}" style="font-size:17px;color:#3381FF;cursor:pointer;padding:4px 0 4px 8px">Details</span></div>
 <div style="font:700 38px/46px Dirham,Sora,sans-serif;margin-top:6px;letter-spacing:-.01em">⃃ {{ totalAmt }}</div>
 </div>
+<sc-if value="{{ hasSplit }}" hint-placeholder-val="{{ false }}">
+<div style="margin:-38px 8px 0;position:relative;border-radius:32px 32px 0 0;padding:22px 16px 62px;background:#FF6757;color:#fff;display:flex;flex-direction:column;gap:18px;animation:rise .35s ease both">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="display:flex;align-items:center;gap:8px;font:600 18px Dirham,Sora,sans-serif"><i class="ph-bold ph-clock-counter-clockwise" style="font-size:20px"></i>Rewind</span><span sc-camel-on-click="{{ toFirstSplit }}" style="font-size:17px;cursor:pointer">Details</span></div>
+<sc-for list="{{ splitViews }}" as="s" hint-placeholder-count="1"><div sc-camel-on-click="{{ s.onTap }}" style="display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:17px;font-weight:600"><span>⃃ {{ s.totalTxt }} back · {{ s.name }}</span><span style="flex:none;font-weight:500">{{ s.paidTxt }}</span></div>
+<div style="display:flex;gap:6px"><sc-for list="{{ s.segs }}" as="g" hint-placeholder-count="4"><div style="flex:1;height:8px;border-radius:4px;background:{{ g.bg }}"></div></sc-for></div>
+<span style="font-size:14px">Next · ⃃ {{ s.nextAmt }} on {{ s.nextDate }}, your payday</span>
+</div></sc-for>
+</div>
+</sc-if>
 <div style="margin:-38px 8px 0;position:relative;border-radius:32px;background:#EFF5FD;padding:18px 16px 10px">
 <div style="display:flex;justify-content:space-between;align-items:center;padding:0 0 8px"><span style="font:600 18px Dirham,Sora,sans-serif">Transactions</span><span sc-camel-on-click="{{ toTxAll }}" style="font-size:17px;color:#3381FF;cursor:pointer">View all</span></div>
-<sc-for list="{{ moneyRows }}" as="r" hint-placeholder-count="10"><div style="display:flex;align-items:center;gap:12px;padding:9px 0">
+<sc-for list="{{ moneyRows }}" as="r" hint-placeholder-count="10"><div sc-camel-on-click="{{ r.onTap }}" style="display:flex;align-items:center;gap:12px;padding:9px 0;cursor:pointer">
 <div style="width:48px;height:48px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;background:{{ r.icBg }}"><i class="{{ r.icon }}" style="font-size:22px;color:{{ r.ic }}"></i></div>
-<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:17px;line-height:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span><sc-if value="{{ r.hasCat }}" hint-placeholder-val="{{ true }}"><span style="font-size:14px;line-height:18px;color:#8A919C">{{ r.cat }}</span></sc-if></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:17px;line-height:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span><sc-if value="{{ r.hasCat }}" hint-placeholder-val="{{ true }}"><span style="font-size:14px;line-height:18px;font-weight:{{ r.catW }};color:{{ r.catFg }}">{{ r.cat }}</span></sc-if></div>
 <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex:none"><span style="font:600 17px/22px Dirham,Onest,sans-serif;color:{{ r.fg }}">{{ r.amt }}</span><span style="font-size:13px;line-height:18px;color:#8A919C">{{ r.meta }}</span></div>
 </div></sc-for>
 </div>
@@ -17169,10 +17179,10 @@ input{font-family:Dirham,Onest,sans-serif}
 
 <!-- ===== MONEY · SPLIT THEM TOGETHER ===== -->
 <sc-if value="{{ sMulti }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Split them together" style="position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px;box-sizing:border-box">
+<div data-screen-label="Rewind them together" style="position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px;box-sizing:border-box">
 <div style="padding:62px 20px 0"><div sc-camel-on-click="{{ pop }}" style="width:44px;height:44px;display:flex;align-items:center;cursor:pointer"><i class="ph-bold ph-caret-left" style="font-size:22px"></i></div></div>
 <div style="padding:10px 24px 0;display:flex;flex-direction:column;gap:6px">
-<span style="font:600 28px/36px Dirham,Sora,sans-serif">Split them together</span>
+<span style="font:600 28px/36px Dirham,Sora,sans-serif">Rewind them together</span>
 <span style="font-size:16px;line-height:23px;color:#5F6670">One payment on each payday instead of several.</span>
 </div>
 <div style="margin:20px 10px 0;border-radius:28px;background:#F3F5F8;padding:4px 16px">
@@ -17188,7 +17198,7 @@ input{font-family:Dirham,Onest,sans-serif}
 <div style="margin:8px 10px 0;border-radius:28px;padding:20px 22px;background:linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.3)),var(--a1) center/cover no-repeat;display:flex;flex-direction:column;gap:4px">
 <span style="font-size:15px;color:#3A3F47">On each payday, 4 times</span>
 <span style="font:700 40px/48px Dirham,Sora,sans-serif">⃃ {{ msPer }}</span>
-<span style="font-size:14px;line-height:20px;color:#3A3F47">⃃ {{ msBack }} back to your accounts today · fee ⃃ {{ msFee }} included</span>
+<span style="font-size:14px;line-height:20px;color:#3A3F47">⃃ {{ msBack }} back to your account today · one-off fee ⃃ {{ msFee }} with the first payment</span>
 </div>
 <div style="margin-top:auto;padding:0 16px"><div sc-camel-on-click="{{ msGo }}" style="height:56px;border-radius:28px;background:#FF6757;color:#fff;font:600 17px Dirham,Onest,sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:{{ msOp }}">{{ msCta }}</div></div>
 </div>
@@ -17196,15 +17206,15 @@ input{font-family:Dirham,Onest,sans-serif}
 
 <!-- ===== MONEY · HOW SPLITS GROW ===== -->
 <sc-if value="{{ sLadder }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="How splits grow" style="position:absolute;inset:0;overflow-y:auto;scrollbar-width:none;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px">
+<div data-screen-label="How your Rewind limit grows" style="position:absolute;inset:0;overflow-y:auto;scrollbar-width:none;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px">
 <div style="padding:62px 20px 0"><div sc-camel-on-click="{{ pop }}" style="width:44px;height:44px;display:flex;align-items:center;cursor:pointer"><i class="ph-bold ph-caret-left" style="font-size:22px"></i></div></div>
 <div style="padding:10px 24px 0;display:flex;flex-direction:column;gap:6px">
-<span style="font:600 28px/36px Dirham,Sora,sans-serif">How your splits grow</span>
+<span style="font:600 28px/36px Dirham,Sora,sans-serif">How your Rewind limit grows</span>
 <span style="font-size:16px;color:#5F6670">Available now: ⃃ {{ availAmt }} of {{ limitAmt }}</span>
 </div>
 <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:22px 24px 0">
 <div style="display:flex;flex-direction:column;gap:8px"><div style="height:8px;border-radius:4px;background:#FF6757"></div><span style="font-size:13px;line-height:18px;color:#5F6670">Mini · up to 1,000</span></div>
-<div style="display:flex;flex-direction:column;gap:8px"><div style="height:8px;border-radius:4px;background:#FF6757"></div><span style="font-size:13px;line-height:18px;font-weight:600">Split · you’re here</span></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:8px;border-radius:4px;background:#FF6757"></div><span style="font-size:13px;line-height:18px;font-weight:600">Rewind · you’re here</span></div>
 <div style="display:flex;flex-direction:column;gap:8px"><div style="height:8px;border-radius:4px;background:#E3E6EB"></div><span style="font-size:13px;line-height:18px;color:#5F6670">Big · up to 12 months</span></div>
 </div>
 <div style="margin:22px 10px 0;border-radius:28px;background:#F3F5F8;padding:18px 18px 8px">
@@ -17217,7 +17227,7 @@ input{font-family:Dirham,Onest,sans-serif}
 </div>
 </sc-for>
 </div>
-<div style="padding:14px 24px 0;font-size:13px;line-height:19px;color:#6B727C">[Partner Bank] makes the final decision on each split and on your limit.</div>
+<div style="padding:14px 24px 0;font-size:13px;line-height:19px;color:#6B727C">[Partner Bank] makes the final decision on each rewind and on your limit.</div>
 </div>
 </sc-if>
 
@@ -17236,9 +17246,9 @@ input{font-family:Dirham,Onest,sans-serif}
 <div ref="{{ txRef }}" data-tx-scroll="1" style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;padding:0 16px 40px">
 <sc-for list="{{ txGroups }}" as="g" hint-placeholder-count="3">
 <div style="padding:16px 0 4px;font:600 17px Dirham,Onest,sans-serif">{{ g.date }}</div>
-<sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3"><div style="display:flex;align-items:center;gap:12px;padding:8px 0">
+<sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3"><div sc-camel-on-click="{{ r.onTap }}" style="display:flex;align-items:center;gap:12px;padding:8px 0;cursor:pointer">
 <div style="width:48px;height:48px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;background:{{ r.icBg }}"><i class="{{ r.icon }}" style="font-size:22px;color:{{ r.ic }}"></i></div>
-<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:17px;line-height:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span><sc-if value="{{ r.hasCat }}" hint-placeholder-val="{{ true }}"><span style="font-size:14px;line-height:18px;color:#8A919C">{{ r.cat }}</span></sc-if></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:17px;line-height:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span><sc-if value="{{ r.hasCat }}" hint-placeholder-val="{{ true }}"><span style="font-size:14px;line-height:18px;font-weight:{{ r.catW }};color:{{ r.catFg }}">{{ r.cat }}</span></sc-if></div>
 <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex:none"><span style="font:600 17px/22px Dirham,Onest,sans-serif;color:{{ r.fg }}">{{ r.amt }}</span><span style="font-size:13px;line-height:18px;color:#8A919C">{{ r.meta }}</span></div>
 </div></sc-for>
 </sc-for>
@@ -17284,12 +17294,46 @@ input{font-family:Dirham,Onest,sans-serif}
 </sc-if>
 </sc-if>
 
+<!-- ===== MONEY · TRANSACTION + REWIND OFFER (v8) ===== -->
+<sc-if value="{{ sTxd }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Transaction" style="position:absolute;inset:0;overflow-y:auto;scrollbar-width:none;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px;box-sizing:border-box">
+<div style="padding:54px 8px 0;height:104px;box-sizing:border-box;display:flex;align-items:center;flex:none"><div sc-camel-on-click="{{ txdBack }}" aria-label="Back" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer"><i class="ph-bold ph-caret-left" style="font-size:22px"></i></div><span style="flex:1"></span><div style="width:44px"></div></div>
+<div style="display:flex;flex-direction:column;align-items:center;padding:0 24px;text-align:center">
+<div style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:{{ txdIcBg }}"><i class="{{ txdIcon }}" style="font-size:30px;color:{{ txdIc }}"></i></div>
+<div style="font-size:17px;line-height:23px;margin-top:14px;text-wrap:balance">{{ txdName }}</div>
+<div style="font:700 36px/44px Dirham,Sora,sans-serif;margin-top:6px;color:{{ txdAmtFg }}">{{ txdAmt }}</div>
+<div style="font-size:15px;color:#6B727C;margin-top:4px">{{ txdMeta }}</div>
+</div>
+<sc-if value="{{ txdOffer }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Rewind offer" style="margin:24px 16px 0;border-radius:24px;background:#fff;box-shadow:0 14px 40px rgba(30,60,120,.12),inset 0 0 0 1px #EEF0F3;padding:18px;display:flex;flex-direction:column;gap:16px;animation:rise .4s .1s ease both">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="height:30px;padding:0 12px 0 9px;border-radius:15px;background:#FFEDEA;color:#C7402E;display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600"><i class="ph-bold ph-clock-counter-clockwise" style="font-size:15px"></i>Rewind</span><span style="font-size:13px;color:#8A94A6">{{ rwPaid }}</span></div>
+<div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;color:#5F6670">Paid in one go</span><div style="height:6px;border-radius:3px;background:#FF6757"></div></div>
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;color:#5F6670">If eligible, here’s how a rewind could look</span><span style="font-size:15px;font-weight:600;color:#1E9E5A">Up to ⃃ {{ rwUpTo }} now · 4 × ⃃ {{ rwPer }}</span></div>
+<div style="display:flex;gap:6px"><sc-for list="{{ rwBars }}" as="b" hint-placeholder-count="4"><div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="align-self:stretch;height:6px;border-radius:3px;background:{{ b.bg }}"></div><span style="font-size:13px;font-weight:600">{{ b.amt }}</span><span style="font-size:11px;color:#8A94A6;margin-top:-4px">{{ b.mon }}</span></div></sc-for></div>
+<div class="v8-press" sc-camel-on-click="{{ rwGo }}" style="height:52px;border-radius:26px;background:#FF6757;color:#fff;font:600 17px Dirham,Onest,sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer">Check my options</div>
+<span style="font-size:12px;line-height:17px;color:#8A919C;text-align:center">Checking is free. [Partner Bank] makes the final decision.</span>
+</div>
+</sc-if>
+<sc-if value="{{ txdDone }}" hint-placeholder-val="{{ false }}">
+<div sc-camel-on-click="{{ toRwDetail }}" style="margin:24px 16px 0;border-radius:24px;background:#FFF1EE;padding:16px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;animation:rise .35s ease both">
+<span style="width:36px;height:36px;border-radius:50%;background:#FF6757;flex:none;display:flex;align-items:center;justify-content:center"><i class="ph-bold ph-clock-counter-clockwise" style="font-size:18px;color:#fff"></i></span>
+<div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600">{{ txdDoneTxt }}</span><span style="font-size:13px;color:#6B727C">{{ txdDoneSub }}</span></div>
+<i class="ph-bold ph-caret-right" style="font-size:15px;color:#C7402E"></i>
+</div>
+</sc-if>
+<sc-if value="{{ txdNoLimit }}" hint-placeholder-val="{{ false }}"><div style="margin:24px 16px 0;border-radius:24px;background:#F3F5F8;padding:16px 18px;font-size:15px;line-height:21px;color:#3A3F47">You’ve used your Rewind limit for now. Your next payment on {{ rwNextDate }} frees up more.</div></sc-if>
+<div style="margin:12px 16px 0;border-radius:24px;background:#F3F5F8;padding:4px 18px">
+<sc-for list="{{ txdRows }}" as="f" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;font-size:15px;border-top:{{ f.bd }}"><span style="color:#5F6670">{{ f.l }}</span><span style="font-weight:600;text-align:right">{{ f.r }}</span></div></sc-for>
+</div>
+</div>
+</sc-if>
+
 <!-- ===== MONEY · SPLIT DETAILS ===== -->
 <sc-if value="{{ sSplitDetail }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Split details" style="position:absolute;inset:0;overflow-y:auto;scrollbar-width:none;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px">
+<div data-screen-label="Rewind details" style="position:absolute;inset:0;overflow-y:auto;scrollbar-width:none;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px">
 <div style="padding:62px 20px 0"><div sc-camel-on-click="{{ pop }}" style="width:44px;height:44px;display:flex;align-items:center;cursor:pointer"><i class="ph-bold ph-caret-left" style="font-size:22px"></i></div></div>
 <div style="padding:10px 24px 0;display:flex;flex-direction:column;gap:6px">
-<span style="font-size:16px;color:#5F6670">{{ sd.name }}</span>
+<span style="display:flex;align-items:center;gap:8px;font-size:16px;color:#5F6670"><i class="ph-bold ph-clock-counter-clockwise" style="font-size:17px;color:#FF6757"></i>Rewind · {{ sd.name }}</span>
 <span style="font:700 38px/46px Dirham,Sora,sans-serif">⃃ {{ sd.left }}</span>
 <span style="font-size:16px;color:#5F6670">left to pay of ⃃ {{ sd.total }}</span>
 </div>
@@ -17311,8 +17355,7 @@ input{font-family:Dirham,Onest,sans-serif}
 <sc-for list="{{ sd.facts }}" as="f" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;font-size:15px"><span style="color:#5F6670">{{ f.l }}</span><span style="font-weight:600;text-align:right">{{ f.r }}</span></div></sc-for>
 </div>
 <div style="margin:8px 10px 0;border-radius:28px;background:#F3F5F8;padding:4px 18px">
-<div sc-camel-on-click="{{ toC2 }}" style="display:flex;align-items:center;gap:12px;padding:14px 0;cursor:pointer;border-bottom:1px solid #E3E6EB"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600">Pay on payday, automatically</span><span style="font-size:13px;color:#8A919C">Phase 2 · autopay from your salary account</span></div><i class="ph-bold ph-caret-right" style="font-size:14px;color:#8A919C"></i></div>
-<div sc-camel-on-click="{{ toC5 }}" style="display:flex;align-items:center;gap:12px;padding:14px 0;cursor:pointer"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600">Payday plan for 28 Nov</span><span style="font-size:13px;color:#8A919C">Phase 2 · which account pays</span></div><i class="ph-bold ph-caret-right" style="font-size:14px;color:#8A919C"></i></div>
+<div sc-camel-on-click="{{ toLadder }}" style="display:flex;align-items:center;gap:12px;padding:14px 0;cursor:pointer"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600">How your Rewind limit grows</span><span style="font-size:13px;color:#8A919C">Pay on time to unlock more</span></div><i class="ph-bold ph-caret-right" style="font-size:14px;color:#8A919C"></i></div>
 </div>
 </div>
 </sc-if>
@@ -17374,164 +17417,6 @@ input{font-family:Dirham,Onest,sans-serif}
 <sc-if value="{{ oneThing.todo }}" hint-placeholder-val="{{ true }}"><div sc-camel-on-click="{{ addSalaryCert }}" style="height:40px;padding:0 20px;border-radius:20px;background:#FF6757;color:#fff;font-size:15px;font-weight:600;display:flex;align-items:center;cursor:pointer">Add</div></sc-if>
 </div>
 <div style="padding:12px 24px 0;font-size:13px;line-height:19px;color:#6B727C">Your level is just for you. It isn’t a credit score and doesn’t change what a bank offers.</div>
-</div>
-</sc-if>
-
-<!-- ===== PHASE 2 · C1 ===== -->
-<sc-if value="{{ sC1 }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="C1 · Noor pays the school" style="position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px;box-sizing:border-box">
-<div style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none">
-<div style="padding:62px 20px 0"><div sc-camel-on-click="{{ pop }}" style="width:44px;height:44px;display:flex;align-items:center;cursor:pointer"><i class="ph-bold ph-caret-left" style="font-size:22px"></i></div></div>
-<div style="padding:6px 24px 0;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-<span style="height:26px;padding:0 10px;border-radius:13px;box-shadow:inset 0 0 0 1px #DADDE2;font-size:12px;font-weight:600;color:#5F6670;display:flex;align-items:center">Phase 2 · PIS</span>
-<span style="font:600 28px/36px Dirham,Sora,sans-serif">I’ll pay the school</span>
-<span style="font-size:16px;line-height:23px;color:#5F6670">Term 2 fees go out in full on 1 Dec. You pay me in parts.</span>
-</div>
-<div style="margin:20px 10px 0;border-radius:28px;background:#F3F5F8;padding:4px 20px">
-<div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #E3E6EB"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:13px;color:#8A919C">To</span><span style="font-size:16px;font-weight:600">Dubai British School</span><span style="font-size:13px;color:#8A919C">IBAN •••• 4410</span></div><span style="font:600 16px Dirham,Onest,sans-serif">⃃ 2,400</span></div>
-<div style="display:flex;align-items:center;gap:12px;padding:14px 0"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:13px;color:#8A919C">When</span><span style="font-size:16px;font-weight:600">1 Dec, morning</span></div><span style="height:26px;padding:0 10px;border-radius:13px;background:#E3F4EA;color:#1F7A45;font-size:12px;font-weight:600;display:flex;align-items:center">On time</span></div>
-</div>
-<div style="margin:8px 10px 0;border-radius:28px;padding:20px 22px;background:linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.3)),var(--a1) center/cover no-repeat;display:flex;flex-direction:column;gap:4px">
-<span style="font-size:14px;color:#3A3F47">You pay, from your salary account</span>
-<div style="display:flex;align-items:baseline;gap:6px"><span style="font:700 40px/48px Dirham,Sora,sans-serif">4 × 609</span><span style="font-size:18px;font-weight:600">AED</span></div>
-<span style="font-size:14px;line-height:20px;color:#3A3F47">28 Nov, 28 Dec, 28 Jan, 28 Feb · your paydays · fee AED 36 included</span>
-</div>
-<div style="display:flex;gap:10px;align-items:center;padding:14px 24px 0;font-size:14px;color:#5F6670"><i class="ph-bold ph-check-circle" style="font-size:18px;color:#FF6757"></i>Zero steps for you: no transfer, no cheque.</div>
-</div>
-<div style="padding:12px 16px 0"><div sc-camel-on-click="{{ c1Go }}" style="height:56px;border-radius:28px;background:{{ c1Bg }};color:{{ c1Fg }};font:600 17px Dirham,Onest,sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ c1Cta }}</div></div>
-</div>
-</sc-if>
-
-<!-- ===== PHASE 2 · C2 ===== -->
-<sc-if value="{{ sC2 }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="C2 · Autopay on payday" style="position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px;box-sizing:border-box">
-<div style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none">
-<div style="padding:62px 20px 0"><div sc-camel-on-click="{{ pop }}" style="width:44px;height:44px;display:flex;align-items:center;cursor:pointer"><i class="ph-bold ph-caret-left" style="font-size:22px"></i></div></div>
-<div style="padding:6px 24px 0;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-<span style="height:26px;padding:0 10px;border-radius:13px;box-shadow:inset 0 0 0 1px #DADDE2;font-size:12px;font-weight:600;color:#5F6670;display:flex;align-items:center">Phase 2 · PIS</span>
-<span style="font:600 28px/36px Dirham,Sora,sans-serif">Pay on payday, automatically</span>
-<span style="font-size:16px;line-height:23px;color:#5F6670">I take each part the moment your salary lands. Nothing to remember.</span>
-</div>
-<div sc-camel-on-click="{{ c2Toggle }}" style="margin:20px 10px 0;border-radius:24px;background:#F3F5F8;padding:16px 20px;display:flex;align-items:center;gap:12px;cursor:pointer">
-<div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600">Autopay from Emirates NBD</span><span style="font-size:13px;color:#8A919C">Your salary account</span></div>
-<div style="width:51px;height:31px;border-radius:16px;position:relative;flex:none;transition:background .2s;background:{{ c2Track }}"><div style="position:absolute;top:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.15);transition:left .2s;left:{{ c2Knob }}"></div></div>
-</div>
-<div style="margin:8px 10px 0;border-radius:24px;background:#F3F5F8;padding:18px 20px;display:flex;flex-direction:column;gap:12px">
-<span style="font-size:17px;font-weight:600">How it works</span>
-<div style="display:flex;align-items:flex-start;gap:14px"><span style="width:28px;height:28px;border-radius:50%;box-sizing:border-box;border:1.5px solid #111;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600">1</span><span style="font-size:16px;line-height:23px;padding-top:2px">27 Nov: I check your balance and remind you.</span></div>
-<div style="display:flex;align-items:flex-start;gap:14px"><span style="width:28px;height:28px;border-radius:50%;box-sizing:border-box;border:1.5px solid #111;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600">2</span><span style="font-size:16px;line-height:23px;padding-top:2px">28 Nov: salary lands, AED 609 goes to the split.</span></div>
-<div style="display:flex;align-items:flex-start;gap:14px"><span style="width:28px;height:28px;border-radius:50%;box-sizing:border-box;border:1.5px solid #111;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600">3</span><span style="font-size:16px;line-height:23px;padding-top:2px">Salary late? I wait and tell you. No penalty for 5 days.</span></div>
-</div>
-</div>
-<div style="padding:12px 16px 0"><div sc-camel-on-click="{{ pop }}" style="height:56px;border-radius:28px;background:#FF6757;color:#fff;font:600 17px Dirham,Onest,sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer">Done</div></div>
-</div>
-</sc-if>
-
-<!-- ===== PHASE 3 · C3 ===== -->
-<sc-if value="{{ sC3 }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="C3 · Split and save" style="position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px;box-sizing:border-box">
-<div style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none">
-<div style="padding:62px 20px 0"><div sc-camel-on-click="{{ pop }}" style="width:44px;height:44px;display:flex;align-items:center;cursor:pointer"><i class="ph-bold ph-caret-left" style="font-size:22px"></i></div></div>
-<div style="padding:6px 24px 0;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-<span style="height:26px;padding:0 10px;border-radius:13px;box-shadow:inset 0 0 0 1px #DADDE2;font-size:12px;font-weight:600;color:#5F6670;display:flex;align-items:center">Phase 3 · savings partner</span>
-<span style="font:600 28px/36px Dirham,Sora,sans-serif">Split it, keep your cushion</span>
-<span style="font-size:16px;line-height:23px;color:#5F6670">The AED 2,400 you didn’t spend sits in savings and grows while you pay the split.</span>
-</div>
-<div style="margin:20px 10px 0;border-radius:28px;background:#F3F5F8;padding:20px;display:flex;flex-direction:column;gap:16px">
-<span style="font-size:14px;color:#5F6670">In savings, month by month</span>
-<div style="display:flex;align-items:flex-end;gap:12px;height:170px">
-<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font-size:12px;font-weight:600">2,400</span><div style="width:100%;height:132px;border-radius:10px;background:#FF6757"></div><span style="font-size:12px;color:#8A919C">Oct</span></div>
-<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font-size:12px;font-weight:600">1,800</span><div style="width:100%;height:99px;border-radius:10px;background:#FF8A7D"></div><span style="font-size:12px;color:#8A919C">Nov</span></div>
-<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font-size:12px;font-weight:600">1,200</span><div style="width:100%;height:66px;border-radius:10px;background:#FFAEA5"></div><span style="font-size:12px;color:#8A919C">Dec</span></div>
-<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font-size:12px;font-weight:600">600</span><div style="width:100%;height:33px;border-radius:10px;background:#FFD0CA"></div><span style="font-size:12px;color:#8A919C">Jan</span></div>
-</div>
-<span style="font-size:16px;font-weight:600">You earn about AED 20 on top, at 4% a year.</span>
-</div>
-<div style="padding:12px 24px 0;font-size:13px;line-height:19px;color:#6B727C">Needs a partner savings account. Profit share instead of interest if the partner is Islamic.</div>
-</div>
-<div style="padding:12px 16px 0"><div sc-camel-on-click="{{ c3Go }}" style="height:56px;border-radius:28px;background:{{ c3Bg }};color:{{ c3Fg }};font:600 17px Dirham,Onest,sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer">{{ c3Cta }}</div></div>
-</div>
-</sc-if>
-
-<!-- ===== PHASE 2 · C4 ===== -->
-<sc-if value="{{ sC4 }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="C4 · Big bills on autopilot" style="position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px;box-sizing:border-box">
-<div style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none">
-<div style="padding:62px 20px 0"><div sc-camel-on-click="{{ pop }}" style="width:44px;height:44px;display:flex;align-items:center;cursor:pointer"><i class="ph-bold ph-caret-left" style="font-size:22px"></i></div></div>
-<div style="padding:6px 24px 0;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-<span style="height:26px;padding:0 10px;border-radius:13px;box-shadow:inset 0 0 0 1px #DADDE2;font-size:12px;font-weight:600;color:#5F6670;display:flex;align-items:center">Phase 2</span>
-<span style="font:600 28px/36px Dirham,Sora,sans-serif">Big bills on autopilot</span>
-<span style="font-size:16px;line-height:23px;color:#5F6670">I ask before each one. One tap to say yes.</span>
-</div>
-<div style="margin:20px 10px 0;border-radius:28px;background:#F3F5F8;padding:4px 20px">
-<sc-for list="{{ c4Rows }}" as="r" hint-placeholder-count="3">
-<div sc-camel-on-click="{{ r.onTap }}" style="display:flex;align-items:center;gap:12px;padding:14px 0;cursor:{{ r.cur }};opacity:{{ r.op }}">
-<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600">{{ r.t }}</span><span style="font-size:13px;line-height:18px;color:#8A919C">{{ r.s }}</span></div>
-<div style="width:51px;height:31px;border-radius:16px;position:relative;flex:none;transition:background .2s;background:{{ r.track }}"><div style="position:absolute;top:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.15);transition:left .2s;left:{{ r.knob }}"></div></div>
-</div>
-</sc-for>
-</div>
-<div style="margin:8px 10px 0;border-radius:24px;background:#FFF1EE;padding:16px 20px;display:flex;flex-direction:column;gap:4px">
-<span style="font-size:13px;color:#6B5A57">Next ask · 18 Mar</span>
-<span style="font-size:16px;line-height:22px;font-weight:600">Term 3 school fees, AED 2,400 on 1 Apr. Split into 4 paydays again?</span>
-</div>
-</div>
-<div style="padding:12px 16px 0"><div sc-camel-on-click="{{ pop }}" style="height:56px;border-radius:28px;background:#FF6757;color:#fff;font:600 17px Dirham,Onest,sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer">Save</div></div>
-</div>
-</sc-if>
-
-<!-- ===== PHASE 2 · C5 ===== -->
-<sc-if value="{{ sC5 }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="C5 · Payday plan" style="position:absolute;inset:0;overflow-y:auto;scrollbar-width:none;background:#fff;animation:scrIn .3s ease both;padding-bottom:40px">
-<div style="padding:62px 20px 0"><div sc-camel-on-click="{{ pop }}" style="width:44px;height:44px;display:flex;align-items:center;cursor:pointer"><i class="ph-bold ph-caret-left" style="font-size:22px"></i></div></div>
-<div style="padding:6px 24px 0;display:flex;align-items:center;justify-content:space-between;gap:10px">
-<div style="display:flex;align-items:center;gap:10px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAzCAYAAAAzSpBQAAAWfmNhQlgAABZ+anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFlhqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOjRiY2E4MzA3LTRkOWItNGIyZS1iM2JiLWY2MzhiYzRhN2EzNgAAAAOTanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuGp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNowdhBI7KfzvX7gHoOP4YwhwAAAGxjYm9yo2lkYzpmb3JtYXRpaW1hZ2UvcG5namluc3RhbmNlSUR4LHhtcDppaWQ6MzBkOGVmYWMtYjE3YS00Y2UwLWJjN2EtYzkwMGM1OTkwNTI3bHJlbGF0aW9uc2hpcGhwYXJlbnRPZgAAAeJqdW1iAAAAQWp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuYWN0aW9ucy52MgAAAAAYYzJzaKghltAT0MXJPYYIaCk9l1wAAAGZY2JvcqJnYWN0aW9uc4KiZmFjdGlvbmtjMnBhLm9wZW5lZGpwYXJhbWV0ZXJzoWtpbmdyZWRpZW50c4GiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYIPY2QP2Eh6xxFKfA6j37AS21pwNMsEnxfxdIQqfdu828pGZhY3Rpb254HWNvbS5hbnRocm9waWMuY2xhdWRlLnByb3ZpZGVkanBhcmFtZXRlcnOheB9jb20uYW50aHJvcGljLm9yaWdpbi1jb25maWRlbmNlZ3Vua25vd25rZGVzY3JpcHRpb254ZkNsYXVkZSBwcm92aWRlZCB0aGlzIGZpbGUgYXQgdGhlIHJlcXVlc3Qgb2YgYSB1c2VyIGFuZCBtYXkgaGF2ZSBjcmVhdGVkIG9yIG1vZGlmaWVkIHRoZSBmaWxlIGNvbnRlbnRzLm1zb2Z0d2FyZUFnZW50oWRuYW1lZkNsYXVkZXJhbGxBY3Rpb25zSW5jbHVkZWT1AAAAyGp1bWIAAABAanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5oYXNoLmRhdGEAAAAAGGMyc2gtUM9aFZ3/Q3ZXEV4HbTkuAAAAgGNib3KlY2FsZ2ZzaGEyNTZjcGFkTQAAAAAAAAAAAAAAAABkaGFzaFggC9q0vX9TWB5Cw05XCOjV4vQ8sDHNk0QGh75IDj/Lq2xkbmFtZW5qdW1iZiBtYW5pZmVzdGpleGNsdXNpb25zgaJlc3RhcnQYIWZsZW5ndGgZFooAAAI+anVtYgAAACdqdW1kYzJjbAARABCAAACqADibcQNjMnBhLmNsYWltLnYyAAAAAg9jYm9ypWNhbGdmc2hhMjU2aXNpZ25hdHVyZXhNc2VsZiNqdW1iZj0vYzJwYS91cm46YzJwYTo0YmNhODMwNy00ZDliLTRiMmUtYjNiYi1mNjM4YmM0YTdhMzYvYzJwYS5zaWduYXR1cmVqaW5zdGFuY2VJRHgseG1wOmlpZDphZWY3NTc2ZC0zYzJmLTQyZmUtODlkNC0wZjRjYjRmYjkzMGNyY3JlYXRlZF9hc3NlcnRpb25zg6JjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg9jZA/YSHrHEUp8DqPfsBLbWnA0ywSfF/F0hCp927zbyiY3VybHgqc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5hY3Rpb25zLnYyZGhhc2hYIDrxUJMG74ZK185vTjqBvCCeWbmjXCFOv36XE7LsPXfyomN1cmx4KXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaGFzaC5kYXRhZGhhc2hYIKqhp1RxySp/PaSmYg5V9nPGjZFfWG+br/wwTyKESThkdGNsYWltX2dlbmVyYXRvcl9pbmZvo2RuYW1lb0FudGhyb3BpYyBGaWxlc2d2ZXJzaW9uZTEuMC4wa3NwZWNWZXJzaW9uZTIuNC4wAAAQOGp1bWIAAAAoanVtZGMyY3MAEQAQgAAAqgA4m3EDYzJwYS5zaWduYXR1cmUAAAAQCGNib3LShFkCEqIBJhghWQIKMIICBjCCAY2gAwIBAgIUQOWgCu7COdC+uIP6BkIFPWdVEwAwCgYIKoZIzj0EAwMwSTEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxLjAsBgNVBAMTJUFudGhyb3BpYyBDb250ZW50IENyZWRlbnRpYWxzIFJvb3QgQ0EwHhcNMjYwODA3MTg0MzU2WhcNMjgwODA2MTk0MzU2WjBEMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEpMCcGA1UEAxMgQW50aHJvcGljIENsYXVkZSBDb250ZW50IFNpZ25pbmcwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASYegpry1AYBRTVNL1CpTlbROnY3dey+UrsF9C3phYrATN3ZHf93Mo8RQN0KOUuOn19P4oWNFWe5n2/She9N7eTo1gwVjAOBgNVHQ8BAf8EBAMCB4AwFQYDVR0lBA4wDAYKKwYBBAGD6F4CATAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFM5R4gSBTmRbI/jjxM+aPpzB11zCMAoGCCqGSM49BAMDA2cAMGQCMDFzHRSeAXrSy1WOzkbhPZ6Km2wGTmZ/2gK18k8BQGXyqz88Rdrz6CTX9flAnYNVxgIwcF9c3fVhqmJKpi+UhasNUMko69cyX6STPfta3Q8EjyzDjzoyrol46FP6VFHhvUcJoWNwYWRZDZ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2WEB/Yj7WmuIXlZViO+BPKiociYlQUK83gnad9TKzmPdhuV0lwEpcwq4x8bA6y/6EvNSjhdOyV/uJdeRfZyBcG+hmsWeGVAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAFzUkdCAK7OHOkAAAAEZ0FNQQAAsY8L/GEFAAAADnRFWHRTb2Z0d2FyZQBGaWdtYZ6xlmMAAAR9SURBVHgBzZpNdtNWFMf/95lTXCbNDlBWgLsClBXETEJPJzWDtjAiXQH2CuJMWgoDwiSnYVKzgpgV4KwAsQOPIOYc63Lv07NjE8WW9J6Mf+co8YeepL/v0333Q4QNwo9/iZFSC5Tel7ctMHZAsl2RuG0Eogv5P6Tn/yWoCKFmrCDmfRHS+UZIUYYi9LWIPEFJahPnRD2TlzHCkIjIXhmRwcXxYXsHn2+rqEPUg4rcKzJdg4rj339twUz/l5cR6obxF70466/axSDUuVQYTc+xCWEK4Yj/OHi2epcAzIVVcxieJ+cuvXjTy/vKW5w4jkhOsDmL5V5EvsAQ4rry766sXxcwPEa2Ts2I7MZ0D5zGtVrW8AP6581g8aNK4uZrl1wsPT97VGocZL1j/g3hGePHyS71B+PZB6Ucil4c//nw3E1DcfX0rsx4cd8acchiTru6MCMsugQdLZ2vyCjn4nVgvPBxQv+e7cID+bE6bqGPEIpsDRzqy7WWE0s9dS4+Xj4IhvDERhtyMdBYMhTZj2VZKU6EqbX6uY4gNW8RABtpTCYqcIAwxDZKwgpxIuwVVoVQdz4PEQg6EScwmahjCmPBT0173bninMU6Nw5mjBa9UgicQLVgAl+INaW6Lo4fH6wPeomCCpsfVgWmjQfwx07NJXHWKzJ114/lC9QEvTzVRLUHX77ciZYtl0X0Ba6gHsvNubzsy9T3O0eatubi3HSMsAXY6WnoGJ5YcdwR18nUwTbhbz03LZvNNrbEajOs9QheIVomjvlpmUGy/2byNiKfhT0xNh/TMlupk+InbAAbI1afmolaLkZZOFhFaz1VY1hjxkYu9D7KE83it9phUyqtcozp79ORkVAlQhUum+WmcmWmCUpDNkYVy1GEKjC3sQlucYKyOC8r91xFywF1lAqukzaqOJSh/vGpW+64msh2QTiZVaP9irILWe/2cBV0izhKUJ14q6y3YDVF7zm/6Ltu65lpsSXHLvbLqZJxTT4fYn5yUJ/nTBtF19Pet50fI5Vi/7pFSq9cGFcHUYF9jvM6PkbK0CGqTpIypcUS3bIwrwkWeCSV5m7eN8aaMkANUuZ7y1XMwkK4d/OXKuzL3k3FqmwpCFSDFDrBBd4UpLOU41cIU2w53WbiP9z+ELALMxRH9cjnSQRFmottOc7ydM9SoN66rqpiLWez3gb8K05XaBfo3PYCfCCzv/yehnIj/VxEmN198Y1Mqfcom7iu5wSNxrGmIGUGuabmB2spo4EwDWYNjqIsi8u6Oe9RD5JVy719i4brhC5FPc3LytXtay0sfvLwECmOUCdqDXJ9AXLlc3Zd2Gzzbo9lh847t7aCv1dQbKeh3FeezkjJzQrkwN0gJe2yqDBu7IUQpqzsrG7UgjNhL0/9w0HHynzOWVD7ZglqRSINnYoBhSnFeuJZUNwN/hRCdn8d2x+xBko9qhFMpBMlbr4fuom5SNXnUCJJc9qSUeyL0LjYICtIp91rETWoU9QM/yeItDib1TAjXOVed2X76F4nmJpR6PupCF8BnVXPgTlk2HUAAAAASUVORK5CYII=" alt="" style="width:26px;height:24px;display:block"></img><span style="font:600 18px Dirham,Sora,sans-serif">Noor</span></div>
-<span style="height:26px;padding:0 10px;border-radius:13px;box-shadow:inset 0 0 0 1px #DADDE2;font-size:12px;font-weight:600;color:#5F6670;display:flex;align-items:center">Phase 2 · orchestration</span>
-</div>
-<div style="padding:18px 20px 0;display:flex;flex-direction:column;gap:18px">
-<div style="font-size:17px;line-height:25px;text-wrap:pretty">Payday plan for 28 Nov. FAB will be low after the school split, so I’d take this payment from Emirates NBD.</div>
-<div style="border-radius:20px;background:#F3F5F8;padding:14px 18px;display:flex;flex-direction:column;gap:10px">
-<div style="display:flex;justify-content:space-between;font-size:13px;color:#6B727C"><span>28 Nov · split payment</span><span>AED 609</span></div>
-<div style="display:flex;justify-content:space-between;font-size:15px"><span>From Emirates NBD, salary</span><span style="font-weight:600">AED 609</span></div>
-<div style="display:flex;justify-content:space-between;font-size:15px"><span style="color:#6B727C">From FAB</span><span style="font-weight:600">AED 0</span></div>
-<div style="height:1px;background:#E1E4E9"></div>
-<div style="display:flex;justify-content:space-between;font-size:15px"><span>FAB after rent and bills</span><span style="font-weight:600;color:#1F7A45">Stays above 0</span></div>
-</div>
-<sc-if value="{{ c5Ask }}" hint-placeholder-val="{{ true }}">
-<div style="display:flex;gap:8px;flex-wrap:wrap"><div sc-camel-on-click="{{ c5Approve }}" style="min-height:48px;padding:0 22px;border-radius:24px;background:#FF6757;color:#fff;font-size:16px;font-weight:600;display:flex;align-items:center;cursor:pointer">Approve</div><div sc-camel-on-click="{{ c5Change }}" style="min-height:48px;padding:0 22px;border-radius:24px;box-shadow:inset 0 0 0 1.5px #DADDE2;font-size:16px;font-weight:600;display:flex;align-items:center;cursor:pointer">Take it from FAB</div></div>
-</sc-if>
-<sc-if value="{{ c5Answered }}" hint-placeholder-val="{{ false }}">
-<div style="align-self:flex-end;max-width:80%;padding:12px 20px;border-radius:24px;background:#EEF0F3;font-size:17px;line-height:23px;animation:rise .3s ease both">{{ c5Me }}</div>
-<div style="font-size:17px;line-height:25px;animation:rise .3s ease both">{{ c5Noor }}</div>
-</sc-if>
-<div style="font-size:17px;line-height:25px;text-wrap:pretty">Also: AED 350 you kept this month is sitting in FAB. Move it to your Wio savings?</div>
-<sc-if value="{{ c5MoveAsk }}" hint-placeholder-val="{{ true }}"><div sc-camel-on-click="{{ c5Move }}" style="align-self:flex-start;min-height:48px;padding:0 22px;border-radius:24px;box-shadow:inset 0 0 0 1.5px #DADDE2;font-size:16px;font-weight:600;display:flex;align-items:center;cursor:pointer">Move 350 to savings</div></sc-if>
-<sc-if value="{{ c5Moved }}" hint-placeholder-val="{{ false }}"><div style="border-radius:20px;background:#FFF1EE;padding:14px 18px;font-size:15px;line-height:21px;animation:rise .3s ease both">Moved AED 350 to Wio savings. I never move money without your OK.</div></sc-if>
-</div>
-</div>
-</sc-if>
-
-<!-- ===== PHASE 3 · C6 ===== -->
-<sc-if value="{{ sC6 }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="C6 · Split at partner checkout" style="position:absolute;inset:0;background:#E7E5E0;animation:scrIn .3s ease both">
-<div style="padding:62px 20px 0;display:flex;align-items:center;justify-content:space-between"><div sc-camel-on-click="{{ pop }}" style="width:44px;height:44px;display:flex;align-items:center;cursor:pointer"><i class="ph-bold ph-caret-left" style="font-size:22px"></i></div></div>
-<div style="padding:6px 24px 0;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-<span style="height:26px;padding:0 10px;border-radius:13px;box-shadow:inset 0 0 0 1px #C9C6C0;font-size:12px;font-weight:600;color:#5F6670;display:flex;align-items:center">Phase 3 · partner checkout</span>
-<span style="font-size:14px;color:#5F6670">[Partner app] · Electronics store</span>
-<span style="font:600 30px/38px Dirham,Sora,sans-serif">Phone · ⃃ 2,400</span>
-</div>
-<div style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:32px 32px 0 0;padding:10px 16px 40px;display:flex;flex-direction:column;gap:10px;box-shadow:0 -10px 30px rgba(0,0,0,.08)">
-<div style="width:40px;height:5px;border-radius:3px;background:#D3D8E0;align-self:center"></div>
-<span style="font-size:15px;color:#5F6670;padding:8px 8px 2px">How do you want to pay?</span>
-<sc-for list="{{ c6Opts }}" as="o" hint-placeholder-count="2">
-<div sc-camel-on-click="{{ o.onTap }}" style="border-radius:18px;padding:16px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;background:{{ o.bg }};box-shadow:{{ o.ring }}">
-<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:600">{{ o.t }}</span><span style="font-size:13px;color:#6B727C">{{ o.s }}</span></div>
-<span style="font:600 15px Dirham,Onest,sans-serif">{{ o.r }}</span>
-</div>
-</sc-for>
-<span style="font-size:13px;line-height:19px;color:#6B727C;padding:2px 8px">Your Noor level travels with you: no new forms inside partner apps. Funded by [Partner Bank].</span>
-<div sc-camel-on-click="{{ c6Go }}" style="height:56px;border-radius:28px;background:#FF6757;color:#fff;font:600 17px Dirham,Onest,sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:{{ c6Op }}">{{ c6Cta }}</div>
-</div>
 </div>
 </sc-if>
 
@@ -17666,7 +17551,7 @@ input{font-family:Dirham,Onest,sans-serif}
 <div style="border-radius:24px;background:#F3F5F8;padding:20px 20px 10px;display:flex;flex-direction:column;align-items:center;animation:rise .35s ease both">
 <span style="height:34px;padding:0 14px 0 6px;border-radius:17px;background:#FF6757;color:#fff;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600"><span style="width:22px;height:22px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><i class="ph-bold ph-check" style="font-size:12px;color:#FF6757"></i></span>Approved</span>
 <span style="font:700 32px/40px Dirham,Sora,sans-serif;margin-top:12px">{{ m.apTotal }}</span>
-<span style="font-size:14px;color:#6B727C">Total amount</span>
+<span style="font-size:14px;color:#6B727C">Back in your account now</span>
 <span style="align-self:stretch;font-size:16px;font-weight:600;margin-top:18px">Payment details</span>
 <div style="align-self:stretch;display:flex;flex-direction:column;padding-top:4px"><sc-for list="{{ m.apRows }}" as="d" hint-placeholder-count="6"><div style="display:flex;justify-content:space-between;gap:12px;padding:9px 0;font-size:15px"><span style="color:#6B727C">{{ d.l }}</span><span style="font-weight:600;text-align:right">{{ d.r }}</span></div></sc-for></div>
 </div>
@@ -17748,8 +17633,14 @@ const TX = {
   insurance: { key: 'insurance', name: 'Health insurance', amount: 1600, meta: 'Renewal due 21 Oct', bank: 'FAB', icon: 'ph-fill ph-heartbeat', ask: 'Show me' },
   laptop: { key: 'laptop', name: 'Laptop', amount: 1600, meta: 'ADCB card · 26 Sep', bank: 'ADCB', icon: 'ph-fill ph-laptop', ask: 'Can I split the laptop?' }
 };
-const LIMIT = 4000, FEE = 0.015;
-const PAYDAYS = ['28 Oct', '28 Nov', '28 Dec', '28 Jan'], REMIND = ['27 Oct', '27 Nov', '27 Dec', '27 Jan'];
+const LIMIT = 3400, FEE = 0.015;
+const PAYDAYS = ['28 Nov', '28 Dec', '28 Jan', '28 Feb'], REMIND = ['27 Nov', '27 Dec', '27 Jan', '27 Feb'];
+Object.assign(TX, {
+  school: { key: 'school', name: 'School fees', full: 'GEMS Wellington Academy', tx: 'GEMS WELLINGTON ACADEMY', amount: 8500, date: '2 Nov', slot: 0, icon: 'ph-fill ph-book-open' },
+  sharaf: { key: 'sharaf', name: 'Sharaf DG', full: 'Sharaf DG', tx: 'Sharaf DG', amount: 1299, date: '27 Oct', slot: 0, icon: 'ph-fill ph-desktop' },
+  ikea: { key: 'ikea', name: 'IKEA', full: 'IKEA Dubai Festival City', tx: 'IKEA DUBAI FESTIVAL CITY', amount: 842, date: '22 Oct', slot: 0, icon: 'ph-fill ph-shopping-bag' }
+});
+const RW_KEY = { 'GEMS WELLINGTON ACADEMY': 'school', 'Sharaf DG': 'sharaf', 'IKEA DUBAI FESTIVAL CITY': 'ikea' };
 const SUG = [['Careem this week', 'careem'], ['Carrefour cashback', 'carrefour'], ['What changed this week?', 'week'], ['My coffee spend', 'coffee']];
 const BACK = { signup: 'intro', otp: 'signup', pin2: 'pin', how: 'help', statement: 'connect', password: 'statement' };
 const n2 = v => v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -17793,7 +17684,7 @@ const fmtPhone = d => [d.slice(0, 2), d.slice(2, 5), d.slice(5)].filter(Boolean)
 class Component extends DCLogic {
   timers = [];
   state = this.base();
-  base() { return { cxDemo: 0, cxFaq: -1, cxJump: 0, cxTop: false, sug: 'ready', noIns: false, tIdx: 0, todayJump: -1, stmtFile: null, stmtErr: null, picker: false, pickHi: null, pw: '', pwErr: false, pwShow: false, kbShift: false, kbNum: false, txN: 10, txLoading: false, txToEnd: false, fDate: null, fBanks: [], fAccs: [], fType: null, sheet: null, sel: [], dSel: [], det: 'loading', toast: null, rentGoal: false, deliveryGoal: false, stmtProg: null, ofBank: null, ofQuery: '', ofAcc: ['cur', 'sav'], review: false, kb: false, pin2: '', press: null, pinErr: false, screen: 'intro', tab: 'today', sub: null, intro: 0, phone: '', otp: '', pin: '', faceId: true, help: ['keep'], how: 'bank', banks: [], splits: [], msSel: ['school', 'flight'], detailIdx: 0, salaryCert: false, careemGoal: false, subsKeep: '', push: false, pushSeen: false, insFine: false, c1Done: false, c2Auto: true, c3Done: false, c4: { school: true, ins: true, rent: false }, c5: 0, c5Moved: false, c6Pay: 'split', c6Done: false, chat: null, choices: [], typing: false, chatsOpen: false, history: [], coffeeGoal: false, subsDone: false, draft: '', chatDraft: '', step: 0 }; }
+  base() { return { cxDemo: 0, cxFaq: -1, cxJump: 0, cxTop: false, sug: 'ready', noIns: false, tIdx: 0, todayJump: -1, stmtFile: null, stmtErr: null, picker: false, pickHi: null, pw: '', pwErr: false, pwShow: false, kbShift: false, kbNum: false, txN: 10, txLoading: false, txToEnd: false, fDate: null, fBanks: [], fAccs: [], fType: null, sheet: null, sel: [], dSel: [], det: 'loading', toast: null, rentGoal: false, deliveryGoal: false, stmtProg: null, ofBank: null, ofQuery: '', ofAcc: ['cur', 'sav'], review: false, kb: false, pin2: '', press: null, pinErr: false, screen: 'intro', tab: 'today', sub: null, intro: 0, phone: '', otp: '', pin: '', faceId: true, help: ['keep'], how: 'bank', banks: [], splits: [], msSel: ['sharaf', 'ikea'], detailIdx: 0, salaryCert: false, careemGoal: false, subsKeep: '', push: false, pushSeen: false, insFine: false, c1Done: false, c2Auto: true, c3Done: false, c4: { school: true, ins: true, rent: false }, c5: 0, c5Moved: false, c6Pay: 'split', c6Done: false, chat: null, choices: [], typing: false, chatsOpen: false, history: [], coffeeGoal: false, subsDone: false, draft: '', chatDraft: '', step: 0 }; }
   componentDidMount() {
     cancelAnimationFrame(window.__noorVraf); clearTimeout(window.__noorVto); clearInterval(window.__noorVtype);
     const SEQ = [['type', 0.2, 2.6, 0], ['load', 900], ['type', 3.68, 5.7, 1], ['load', 900], ['type', 6.78, 8.8, 2], ['load', 1100], ['card', 5500], ['card2', 2600], ['orb', 3600]];
@@ -17939,19 +17830,20 @@ class Component extends DCLogic {
   }
 
   // ---------- split ----------
-  plan(amount, n) { const fee = Math.round(amount * ({ 2: 0.01, 3: 0.0125, 4: 0.015 }[n] || FEE)); return { per: Math.round((amount + fee) / n * 100) / 100, fee, feeEach: Math.round(fee / n * 100) / 100, total: amount + fee }; }
+  plan(amount, n) { const r2 = v => Math.round(v * 100) / 100, fee = r2(amount * ({ 2: 0.01, 3: 0.0125, 4: 0.015 }[n] || FEE)), per = r2(amount / n); return { per, fee, feeEach: fee, first: r2(per + fee), total: r2(amount + fee) }; }
+  rwAmt(items) { return Math.max(0, Math.min(this.sumOf(items), Math.floor(this.available()))); }
   curSplits() {
     if (this.state.splits.length) return this.state.splits;
-    if (this.props.startWithSplit) return [{ items: ['school'], name: 'School fees', amount: 2400, n: 4, paid: 0 }];
+    if (this.props.startWithSplit) return [{ items: ['school'], name: 'School fees', amount: 3400, n: 4, paid: 0 }];
     return [];
   }
   isSplit(k) { return this.curSplits().some(s => s.items.includes(k)); }
   available() { return LIMIT - this.curSplits().reduce((a, s) => a + s.amount * (1 - s.paid / s.n), 0); }
   defN(items) { return items.includes('insurance') ? 2 : 4; }
   sumOf(items) { return items.reduce((a, k) => a + TX[k].amount, 0); }
-  banksOf(items) { return [...new Set(items.map(k => TX[k].bank))].join(' and '); }
+  banksOf(items) { return [...new Set(items.map(k => TX[k].slot !== undefined ? BANKS[this.bankKey(TX[k].slot)][0] : TX[k].bank))].join(' and '); }
   splitSteps(items, extra = []) {
-    return [{ noor: 'I found 3 options. Choose how you’d like to pay it back:' }, { card: 'opts', items, amount: this.sumOf(items) }, ...extra.filter(e => e.note),
+    return [{ noor: 'I found 3 options. Choose how you’d like to pay it back:' }, { card: 'opts', items, amount: this.rwAmt(items) }, ...extra.filter(e => e.note),
       { choices: [...extra.filter(e => e.label), { label: 'Not now', next: [{ noor: 'Okay. I’ll keep this offer for 7 days in case you change your mind.' }] }] }];
   }
   pickOpt(items, n) {
@@ -17962,12 +17854,12 @@ class Component extends DCLogic {
     this.play(this.approveSteps(items, n));
   }
   approveSteps(items, n) {
-    const amount = this.sumOf(items), up = items.includes('insurance'), name = items.map(k => TX[k].name).join(' + ');
-    const acct = up ? 'Okay' : items.length > 1 ? 'Yes, back to FAB and Emirates NBD' : `Yes, ${TX[items[0]].bank} •••• ${TX[items[0]].bank === 'FAB' ? '7890' : '4521'}`;
+    const amount = this.rwAmt(items), up = items.includes('insurance'), name = items.map(k => TX[k].name).join(' + '), bk = this.bankKey(TX[items[0]].slot || 0);
+    const acct = up ? 'Okay' : `Yes, ${BANKS[bk][0]} •••• ${(ACCTS[bk] || [['', '0000']])[0][1]}`;
     const ask = up ? 'I’ll send it to FAB on 20 Oct, a day before it’s due, and take the payments from the same account. Okay?' : items.length > 1 ? 'Where should I send the money? I’ll put each amount back where it came from and take the payments from the same accounts.' : 'Where should I send the money? I’ll take the payments from the same account.';
     const sent = [{ card: 'done', big: 'AED ' + n0(amount), label: up ? 'lands in FAB on 20 Oct' : 'is on its way', do: () => this.setState({ splits: [...this.curSplits(), { items, name, amount, n, paid: 0 }] }) },
-      { noor: `All done! Your first payment is on **${PAYDAYS[0]}**, your payday. I’ll remind you the day before. You can find your split anytime in Money.` },
-      { choices: [{ label: 'Go to Money', act: () => this.closeAndGo('money') }] }];
+      { noor: `All done! Your first payment is on **${PAYDAYS[0]}**, your payday. I’ll remind you the day before. You can find your Rewind anytime in Money.` },
+      { choices: [{ label: 'See my Rewind in Money', act: () => this.closeAndGo('money') }] }];
     return [{ card: 'approved', amount, n }, { noor: 'Great news, you’re approved! Two quick steps and the money is yours. Ready?' },
       { choices: [{ label: 'Yes', next: [{ noor: 'Please read these and give your consent:' }, { card: 'consent' },
         { choices: [{ label: 'I agree', next: [{ noor: ask }, { choices: [{ label: acct, next: sent }] }] }] }] }] }];
@@ -17981,10 +17873,14 @@ class Component extends DCLogic {
     const table = (rows, total) => ({ card: 'table', rows, total });
     switch (id) {
       case 'split': {
-        const t = arg || TX.school;
-        if (this.isSplit(t.key)) return { id: 'split-' + t.key, title: t.name, steps: [{ me: t.ask }, { noor: 'This one is already split. You can see every payment in Money.' }, { choices: [{ label: 'Open my split', act: () => this.closeAndGo('money') }] }] };
-        const addFlight = t.key === 'school' && !this.isSplit('flight') ? [{ note: 'You also have a flight from 7 Oct. I can add it to the same paydays.' }, { label: 'Add the flight', next: () => [{ noor: 'Okay, both together: AED 3,600.' }, ...this.splitSteps(['school', 'flight'])] }] : [];
-        return { id: 'split-' + t.key, title: t.name, steps: [{ me: t.ask }, ...this.splitSteps([t.key], addFlight)] };
+        const t = arg || TX.school, av = Math.floor(this.available()), amt = Math.min(t.amount, av), ask = `Rewind ${t.name} · AED ${n0(t.amount)}`;
+        const openRw = { label: 'Open my Rewind', act: () => { const ix = this.curSplits().findIndex(x => x.items.includes(t.key)); this.closeChat(); this.setState({ screen: 'app', tab: 'money', sub: 'splitDetail', detailIdx: Math.max(0, ix) }); } };
+        if (this.isSplit(t.key)) return { id: 'split-' + t.key, title: 'Rewind', steps: [{ me: ask }, { noor: 'This one is already rewound. You can see every payment in Money.' }, { choices: [openRw] }] };
+        if (av < 100) return { id: 'split-' + t.key, title: 'Rewind', steps: [{ me: ask }, { noor: `You’ve used your Rewind limit for now. Your next payment on **${PAYDAYS[0]}** frees up more.` }] };
+        const intro = amt >= t.amount ? `You paid **AED ${n0(t.amount)}** for ${t.full} on ${t.date}. I can put it back in your account now, and you pay it back on your paydays.` : `You paid **AED ${n0(t.amount)}** for ${t.full} on ${t.date}. I can put **AED ${n0(amt)}** of it back in your account now, and you pay it back on your paydays.`;
+        const both = TX.sharaf.amount + TX.ikea.amount;
+        const addIkea = t.key === 'sharaf' && !this.isSplit('ikea') && both <= av ? [{ note: `You also paid IKEA AED ${n0(TX.ikea.amount)} on ${TX.ikea.date}. I can rewind both on the same paydays.` }, { label: 'Add IKEA', next: () => [{ noor: `Okay, both together: AED ${n0(both)}.` }, ...this.splitSteps(['sharaf', 'ikea'])] }] : [];
+        return { id: 'split-' + t.key, title: 'Rewind', steps: [{ me: ask }, { noor: intro }, ...this.splitSteps([t.key], addIkea)] };
       }
       case 'insurance': {
         const t = TX.insurance, av = this.available();
@@ -17992,7 +17888,7 @@ class Component extends DCLogic {
         if (t.amount > av) return { id, title: t.name, steps: [{ me: 'Show me' }, { noor: `Your health insurance renewal is **AED 1,600**, but you can split up to AED ${n0(Math.max(0, av))} right now. Your next payment frees up more.` }] };
         return { id, title: t.name, steps: [{ me: 'Show me' }, { noor: 'Your health insurance renewal is **AED 1,600**, due on 21 Oct.' }, { noor: 'I can send the money to FAB the day before, and you pay me back on 28 Oct and 28 Nov, your paydays.' }, ...this.splitSteps(['insurance'])] };
       }
-      case 'splitMulti': return { id: 'split-multi', title: 'Split together', steps: [{ me: 'Split ' + arg.map(k => TX[k].name).join(' and ') + ' together' }, ...this.splitSteps(arg)] };
+      case 'splitMulti': return { id: 'split-multi', title: 'Rewind', steps: [{ me: 'Rewind ' + arg.map(k => TX[k].name).join(' and ') + ' together' }, ...this.splitSteps(arg)] };
       case 'getmore': return { id, title: 'Keep more this month', steps: [{ me: 'Show me' },
         { noor: 'I found that your card gives you nothing back on these:' },
         table([['Taxis', '~AED 900 a month'], ['Food delivery', '~AED 700 a month'], ['Groceries', '~AED 1,400 a month']], [['Back from your card', 'AED 0']]),
@@ -18129,8 +18025,8 @@ class Component extends DCLogic {
       if (v.steps) v.stepList = it.steps.map((t, j) => ({ n: j + 1, t }));
       if (v.done) { v.big = it.big; v.label = it.label; }
       if (v.apps) { const sel = chat.appSel ? chat.appSel[i] : undefined; v.appList = it.apps.map((a, j) => ({ name: a.name, glyph: a.glyph, year: a.year, mo: a.mo, btn: sel === j ? 'Cancel page opened' : 'Cancel ' + a.name, op: sel != null && sel !== j ? 0.45 : 1, onTap: () => this.cancelApp(i, j) })); }
-      if (it.card === 'opts') { v.opts = true; const sel = chat.splitLocked ? chat.splitN : null; v.optList = [2, 3, 4].map(n => { const p = this.plan(it.amount, n), on = sel === n; return { label: `Pay in ${n}`, mo: 'AED ' + n2(p.per), fee: 'Includes fee AED ' + n2(p.feeEach), bg: on ? '#FF6757' : '#F3F5F8', fg: on ? '#fff' : '#111', sfg: on ? 'rgba(255,255,255,.85)' : '#6B727C', op: sel && !on ? 0.45 : 1, onTap: () => this.pickOpt(it.items, n) }; }); }
-      if (it.card === 'approved') { v.approved = true; const p = this.plan(it.amount, it.n); v.apTotal = 'AED ' + n2(p.total); v.apRows = [['Principal amount', 'AED ' + n2(it.amount)], ['Repayment', `${it.n} paydays`], ['Each payment', 'AED ' + n2(p.per)], ['First payment', PAYDAYS[0] + ', payday'], ['Fee, included', 'AED ' + n2(p.fee)], ['Funded by', '[Partner Bank]']].map(([l, r]) => ({ l, r })); }
+      if (it.card === 'opts') { v.opts = true; const sel = chat.splitLocked ? chat.splitN : null; v.optList = [2, 3, 4].map(n => { const p = this.plan(it.amount, n), on = sel === n; return { label: `Pay in ${n}`, mo: 'AED ' + n2(p.per), fee: 'Fee AED ' + n2(p.fee) + ' with the first payment', bg: on ? '#FF6757' : '#F3F5F8', fg: on ? '#fff' : '#111', sfg: on ? 'rgba(255,255,255,.85)' : '#6B727C', op: sel && !on ? 0.45 : 1, onTap: () => this.pickOpt(it.items, n) }; }); }
+      if (it.card === 'approved') { v.approved = true; const p = this.plan(it.amount, it.n); v.apTotal = 'AED ' + n2(it.amount); v.apRows = [['Repayment', `${it.n} paydays`], ['Each payment', 'AED ' + n2(p.per)], ['First payment', `${PAYDAYS[0]}, payday · AED ${n2(p.first)} with fee`], ['Fee, one-off', 'AED ' + n2(p.fee)], ['Total to pay back', 'AED ' + n2(p.total)], ['Funded by', '[Partner Bank]']].map(([l, r]) => ({ l, r })); }
       if (it.card === 'consent') v.consent = true;
       if (it.card === 'offers') { v.offers = true; v.offerList = OFFERS.map(([t, s2, url]) => ({ t, s: s2, bg: cardBg, onTap: () => this.toast(`Opening ${url} for the full terms`, 'ph-bold ph-arrow-square-out') })); }
       if (it.card === 'subs') {
@@ -18152,31 +18048,31 @@ class Component extends DCLogic {
 
     // money
     const pl = s => this.plan(s.amount, s.n);
-    const splitViews = splits.map((s, idx) => { const p = pl(s); return { name: s.name, paidTxt: `${s.paid} of ${s.n} paid`, nextDate: PAYDAYS[s.paid] || '', totalTxt: n2(p.total), nextAmt: n2(p.per), remind: REMIND[s.paid] || '', segs: Array.from({ length: s.n }, (_, i) => ({ bg: i < s.paid ? '#fff' : 'rgba(255,255,255,.45)' })), onTap: () => this.setState({ sub: 'splitDetail', detailIdx: idx }) }; });
+    const splitViews = splits.map((s, idx) => { const p = pl(s); return { name: s.name, paidTxt: `${s.paid} of ${s.n} paid`, nextDate: PAYDAYS[s.paid] || '', totalTxt: n0(s.amount), nextAmt: n2(s.paid ? p.per : p.first), remind: REMIND[s.paid] || '', segs: Array.from({ length: s.n }, (_, i) => ({ bg: i < s.paid ? '#fff' : 'rgba(255,255,255,.45)' })), onTap: () => this.setState({ sub: 'splitDetail', detailIdx: idx }) }; });
     const ds = splits[S.detailIdx] || splits[0];
-    const sd = ds ? (() => { const p = pl(ds); const paidAmt = p.per * ds.paid; return { name: ds.name, left: n2(p.total - paidAmt), total: n2(p.total),
+    const sd = ds ? (() => { const p = pl(ds); const paidAmt = ds.paid ? p.first + p.per * (ds.paid - 1) : 0; return { name: ds.name, left: n2(p.total - paidAmt), total: n2(p.total),
       segs: Array.from({ length: ds.n }, (_, i) => ({ bg: i < ds.paid ? '#FF6757' : '#E3E6EB' })),
-      schedule: Array.from({ length: ds.n }, (_, i) => { const paid = i < ds.paid, nxt = i === ds.paid; return { date: PAYDAYS[i] + ' · payday', amt: n2(p.per), status: paid ? 'Paid' : nxt ? 'Next' : '', stFg: paid ? '#1F8A4C' : '#C7402E', dot: paid ? '#FF6757' : nxt ? '#111' : '#D3D8E0' }; }),
-      facts: [['Split', `${ds.n} paydays`], ['Each payment', 'AED ' + n2(p.per)], ['Fee, included', 'AED ' + n2(p.fee)], ['Money went back to', this.banksOf(ds.items)], ['Funded by', '[Partner Bank]']].map(([l, r]) => ({ l, r })) }; })() : null;
-    const eligible = ['school', 'flight'].filter(k => !isSplit(k) && TX[k].amount <= avail);
-    const splitBits = k => { const s = splits.find(x => x.items.includes(k)); return { canSplit: eligible.includes(k), isSplit: !!s, splitTxt: s ? `Split · ${s.n} × ${n2(pl(s).per)}` : '', onSplit: () => this.openChat('split', TX[k]) }; };
+      schedule: Array.from({ length: ds.n }, (_, i) => { const paid = i < ds.paid, nxt = i === ds.paid; return { date: PAYDAYS[i] + ' · payday', amt: n2(i ? p.per : p.first), status: paid ? 'Paid' : nxt ? 'Next' : '', stFg: paid ? '#1F8A4C' : '#C7402E', dot: paid ? '#FF6757' : nxt ? '#111' : '#D3D8E0' }; }),
+      facts: [['Back in your account', 'AED ' + n2(ds.amount)], ['Repayment', `${ds.n} paydays`], ['Each payment', 'AED ' + n2(p.per)], ['Fee, one-off', 'AED ' + n2(p.fee) + ' with the first payment'], ['Money went back to', this.banksOf(ds.items)], ['Funded by', '[Partner Bank]']].map(([l, r]) => ({ l, r })) }; })() : null;
+    const eligible = ['sharaf', 'ikea'].filter(k => !isSplit(k) && TX[k].amount <= avail);
+    const splitBits = k => { const s = splits.find(x => x.items.includes(k)); return { canSplit: eligible.includes(k), isSplit: !!s, splitTxt: s ? `Rewind · ${s.n} × ${n2(pl(s).per)}` : '', onSplit: () => this.openChat('split', TX[k]) }; };
     const R = (name, meta, amt, ic, k) => ({ name, meta, icon: 'ph-fill ' + ic, amt: amt.startsWith('+') ? '+⃃ ' + amt.slice(1) : '⃃ ' + amt, fg: amt.startsWith('+') ? '#1F8A4C' : '#111', ...(k ? splitBits(k) : { canSplit: false, isSplit: false, splitTxt: '' }) });
     const txGroups = [
       ['This week', [R('School fees', 'FAB · Today', '2,400.00', 'ph-graduation-cap', 'school'), R('Flight to Kochi', 'Emirates NBD · 7 Oct', '1,200.00', 'ph-airplane-tilt', 'flight'), R('Careem', 'Wio card · 9 rides', '288.00', 'ph-car'), R('Carrefour', 'Emirates NBD · 6 Oct', '214.00', 'ph-shopping-cart'), R('Electricity & water', 'FAB · 6 Oct', '380.00', 'ph-lightning')]],
       ['Earlier in October', [R('Talabat', 'Wio card · 3 Oct', '64.50', 'ph-hamburger'), R('Starbucks', 'Wio card · 2 Oct', '24.00', 'ph-coffee')]],
       ['September', [R('Sent home', 'Al Ansari Exchange · 29 Sep', '3,000.00', 'ph-paper-plane-tilt'), R('Salary', 'ACME LLC · Emirates NBD · 28 Sep', '+18,500.00', 'ph-briefcase'), R('Laptop', 'ADCB card · 26 Sep', '1,600.00', 'ph-laptop')]]
     ].map(([date, rows]) => ({ date, rows }));
-    const msItems = ['school', 'flight', 'laptop'].filter(k => !isSplit(k));
+    const msItems = ['sharaf', 'ikea'].filter(k => !isSplit(k));
     const msSel = S.msSel.filter(k => msItems.includes(k));
     const msSum = this.sumOf(msSel), msP = this.plan(msSum, 4);
     const overK = msItems.filter(k => !msSel.includes(k) && msSum + TX[k].amount > avail);
     const msRows = msItems.map(k => { const on = msSel.includes(k), over = overK.includes(k); return { name: TX[k].name, meta: TX[k].meta, amt: n0(TX[k].amount), box: on ? '#FF6757' : '#fff', boxBd: on ? 'none' : '1.5px solid #C9CED6', op: over ? 0.45 : 1, onTap: () => { if (over) return; this.setState({ msSel: on ? msSel.filter(x => x !== k) : [...msSel, k] }); } }; });
-    const ladderChecks = [['Bank account connected', '', true], ['Salary account connected', '', true], ['First split paid on time', 'First payment · 28 Oct', false], ['Tenancy contract (Ejari)', 'May raise your limit · 1 min', !!S.ejari, 'ejari'], ['Salary certificate', 'May raise your limit · 1 min', !!S.salaryCert, 'salaryCert']]
+    const ladderChecks = [['Bank account connected', '', true], ['Salary account connected', '', true], ['First Rewind payment on time', 'First payment · 28 Nov', false], ['Tenancy contract (Ejari)', 'May raise your limit · 1 min', !!S.ejari, 'ejari'], ['Salary certificate', 'May raise your limit · 1 min', !!S.salaryCert, 'salaryCert']]
       .map(([t, s, ok, key]) => { const sub2 = ok && key ? 'Added · I’ll check it within a day' : s; return { t, s: sub2, hasS: !!sub2, bg: ok ? '#FF6757' : 'transparent', bd: ok ? 'none' : '1.5px solid #C9CED6', fg: ok ? '#5F6670' : '#111', add: !!key && !ok, onAdd: () => key && this.setState({ [key]: true }) }; });
 
     // v8 · money
     const bal = k => this.bal(k);
-    const txRow = (t, withDate) => { const [k] = this.accOf(t), inc = t.amt > 0; return { name: t.name, cat: inc ? '' : t.cat, hasCat: !inc, icon: 'ph-fill ' + CAT[t.cat], ic: inc ? '#16B96C' : '#3381FF', icBg: withDate ? '#fff' : inc ? '#E3F8EE' : '#EFF5FD', amt: '⃃ ' + n2(Math.abs(t.amt)), fg: inc ? '#16B96C' : '#111', meta: withDate ? `${dShort(t.d)} · ${BANKS[k][0]}` : BANKS[k][0] }; };
+    const txRow = (t, withDate) => { const [k] = this.accOf(t), inc = t.amt > 0, rk = RW_KEY[t.name], rs = rk ? splits.find(x => x.items.includes(rk)) : null; return { onTap: () => this.setState({ sub: 'txd', txId: t.id, txFrom: S.sub || null, sheet: null }), catFg: rs ? '#E5533F' : '#8A919C', catW: rs ? 600 : 400, name: t.name, cat: inc ? '' : rs ? `Rewind · ${rs.n} × ⃃${n0(this.plan(rs.amount, rs.n).per)}` : t.cat, hasCat: !inc, icon: 'ph-fill ' + CAT[t.cat], ic: inc ? '#16B96C' : '#3381FF', icBg: withDate ? '#fff' : inc ? '#E3F8EE' : '#EFF5FD', amt: '⃃ ' + n2(Math.abs(t.amt)), fg: inc ? '#16B96C' : '#111', meta: withDate ? `${dShort(t.d)} · ${BANKS[k][0]}` : BANKS[k][0] }; };
     const filtered = this.txFiltered(), shown = filtered.slice(0, S.txN), txG8 = [];
     shown.forEach(t => { const last = txG8[txG8.length - 1]; if (last && last.d === t.d) last.rows.push(txRow(t, false)); else txG8.push({ d: t.d, date: dLong(t.d), rows: [txRow(t, false)] }); });
     const fmtRange = r => r[0] === r[1] ? dShort(r[0]) + ' 2026' : `${dShort(r[0])} – ${dShort(r[1])}`;
@@ -18197,6 +18093,9 @@ class Component extends DCLogic {
       }
       return { name: MON[m], cells };
     };
+    const txd = TXS.find(t => t.id === S.txId) || TXS.find(t => t.name === TX.school.tx), [tdk, tdac] = this.accOf(txd), tdin = txd.amt > 0;
+    const tdKey = RW_KEY[txd.name], tdRw = tdKey ? splits.find(x => x.items.includes(tdKey)) : null, rwAv = Math.max(0, Math.floor(avail));
+    const rwCan = tdKey ? Math.min(TX[tdKey].amount, rwAv) : 0, rwP = this.plan(rwCan || 1, 4);
     const detGroups = picked.map(k => { const ac = ACCTS[k] || []; return { name: BANKS[k][0], logo: LOGO(k), n: `${ac.length} account${ac.length === 1 ? '' : 's'}`, amt: n2(bal(k)), accs: ac.map(([nm, no, am]) => ({ name: nm, no, amt: n2(am) })) }; });
 
     // loader
@@ -18210,10 +18109,12 @@ class Component extends DCLogic {
       : inApp && S.tab === 'today' && !S.sub ? (S.noIns ? 'today:empty' : S.tIdx === 0 ? 'today:hi:' + S.sug : 'today:' + S.tIdx)
       : inApp && S.sub === 'txAll' ? 'tx:' + (S.sheet || (S.txToEnd ? 'more' : ''))
       : inApp && S.sub === 'details' ? (S.det === 'err' ? 'det:err' : 'det:ok')
-      : inApp ? `app:${S.tab}:${S.sub || ''}`
+      : inApp ? `app:${S.tab}:${S.sub || (S.tab === 'money' && splits.length ? 'rw' : '')}`
       : S.screen === 'statement' ? (S.picker ? 'stmt:picker' : S.stmtErr ? 'stmt:' + S.stmtErr : S.stmtProg !== null ? 'stmt:up' : 'statement')
       : S.screen === 'password' ? (S.pwErr ? 'pw:err' : S.pwShow ? 'pw:show' : 'password') : S.screen;
-    const presetSplit = () => ({ splits: [{ items: ['school'], name: 'School fees', amount: 2400, n: 4, paid: 0 }] });
+    const presetSplit = () => ({ splits: [{ items: ['school'], name: 'School fees', amount: 3400, n: 4, paid: 0 }] });
+    const schoolTx = TXS.find(t => t.name === TX.school.tx).id;
+    const rwChat = (k, extra = {}) => () => { this.app('money', { sub: 'txd', txId: TXS.find(t => t.name === TX[k].tx).id, txFrom: null, ...extra }); this.later(() => this.openChat('split', TX[k]), 50); };
     const todayJ = (idx, extra = {}) => () => this.enterToday({ todayJump: idx, ...extra }, false);
     const stmt = extra => () => this.go('statement', { stmtFile: null, stmtErr: null, stmtProg: null, picker: false, ...extra });
     const pwJ = extra => () => this.go('password', { stmtFile: FILES.pw, pw: '', pwErr: false, pwShow: false, kbShift: false, kbNum: false, ...extra });
@@ -18225,8 +18126,8 @@ class Component extends DCLogic {
       ['Today · new', [['Hi · suggestions', 'today:hi:ready', todayJ(0)], ['Hi · loading suggestions', 'today:hi:loading', () => this.enterToday({}, true, 2600)], ['Hi · no suggestions', 'today:hi:none', todayJ(0, { sug: 'none' })], ['Keep more · cashback', 'today:1', todayJ(1)], ['Cashback cards chat', 'chat:cashback', chatJump('cashback')], ['Subscriptions', 'today:2', todayJ(2)], ['Subscriptions chat', 'chat:subsAll', chatJump('subsAll')], ['Chat · 1 subscription', 'chat:subsAll-1', chatJump('subsAll', 1)], ['Chat · 2 in one bank', 'chat:subsAll-2', chatJump('subsAll', 2)], ['Overlapping subscriptions', 'today:3', todayJ(3)], ['Overlap chat · with AI', 'chat:overlap-ai', chatJump('overlap', 'ai')], ['Overlap chat · without AI', 'chat:overlap-plain', chatJump('overlap', 'plain')], ['Coming up', 'today:4', todayJ(4)], ['No insights yet', 'today:empty', todayJ(1, { noIns: true })]]],
       ['Money · new', [['Money', 'app:money:', () => this.app('money')], ['Transactions', 'tx:', txJ({})], ['Loading more', 'tx:more', txJ({ txToEnd: true })], ['Filter · date', 'tx:date', txJ({ sheet: 'date', dSel: [] })], ['Filter · banks', 'tx:banks', txJ({ sheet: 'banks', sel: [] })], ['Filter · accounts', 'tx:accounts', txJ({ sheet: 'accounts', sel: [] })], ['Filter · type', 'tx:type', txJ({ sheet: 'type' })], ['Details', 'det:ok', () => { this.app('money'); this.openDetails(false); }], ['Details · can’t load', 'det:err', () => { this.app('money'); this.openDetails(true); }]]],
       ['You', [['You', 'app:you:', () => this.app('you')], ['Noor progress', 'app:you:progress', () => this.app('you', { sub: 'progress' })], ['Settings', 'app:you:settings', () => this.app('you', { sub: 'settings' })], ['Chats list', 'chats', () => { this.enterToday({}, false); this.later(() => this.setState({ chatsOpen: true }), 50); }]]],
-      ['From v5 · split and chats', [['Split school fees', 'chat:split-school', chatJump('split', TX.school)], ['Split them together', 'app:money:multi', () => this.app('money', { sub: 'multi', msSel: ['school', 'flight'] })], ['How splits grow', 'app:money:ladder', () => this.app('money', { ...presetSplit(), sub: 'ladder' })], ['Split details', 'app:money:splitDetail', () => this.app('money', { ...presetSplit(), sub: 'splitDetail', detailIdx: 0 })], ['Get more', 'chat:getmore', chatJump('getmore')], ['Plan ahead', 'chat:rent', chatJump('rent')], ['Coffee challenge', 'chat:coffee', chatJump('coffee', 'AED 420')], ['Careem this week', 'chat:careem', chatJump('careem')], ['Before a big payment', 'chat:insurance', chatJump('insurance')]]],
-      ['Phase 2 · 3', [['C1 · Noor pays the school', 'app:money:c1', () => this.app('money', { sub: 'c1', c1Done: false })], ['C2 · Autopay on payday', 'app:money:c2', () => this.app('money', { sub: 'c2' })], ['C3 · Split and save', 'app:money:c3', () => this.app('money', { sub: 'c3', c3Done: false })], ['C4 · Bills on autopilot', 'app:money:c4', () => this.app('money', { sub: 'c4' })], ['C5 · Payday plan', 'app:money:c5', () => this.app('money', { sub: 'c5', c5: 0, c5Moved: false })], ['C6 · Partner checkout', 'app:money:c6', () => this.app('money', { sub: 'c6', c6Done: false, c6Pay: 'split' })]]],
+      ['Rewind', [['Purchase · Rewind offer', 'app:money:txd', () => this.app('money', { sub: 'txd', txId: schoolTx, txFrom: null, splits: [] })], ['Rewind chat', 'chat:split-school', rwChat('school', { splits: [] })], ['Money · with Rewind', 'app:money:rw', () => this.app('money', presetSplit())], ['Rewind details', 'app:money:splitDetail', () => this.app('money', { ...presetSplit(), sub: 'splitDetail', detailIdx: 0 })], ['How your limit grows', 'app:money:ladder', () => this.app('money', { ...presetSplit(), sub: 'ladder' })], ['Sharaf DG + IKEA', 'chat:split-sharaf', rwChat('sharaf', { splits: [] })], ['Rewind them together', 'app:money:multi', () => this.app('money', { sub: 'multi', splits: [], msSel: ['sharaf', 'ikea'] })]]],
+      ['More chats', [['Get more', 'chat:getmore', chatJump('getmore')], ['Plan ahead', 'chat:rent', chatJump('rent')], ['Coffee challenge', 'chat:coffee', chatJump('coffee', 'AED 420')], ['Careem this week', 'chat:careem', chatJump('careem')]]],
     ];
     const flowMap = groups.map(([title, items]) => ({ title, items: items.map(([label, key, fn]) => ({ label, onTap: fn, bg: curKey === key ? '#fff' : 'transparent', fg: curKey === key ? '#111' : '#5F6670' })) }));
 
@@ -18358,16 +18259,25 @@ class Component extends DCLogic {
       dateLbl: dSame ? 'Reset' : !dq.length ? 'Select a date' : dq.length === 1 ? dDots(dq[0]) : `${dDots(dq[0])}–${dDots(dq[1])}`, dateBg: dq.length || dSame ? '#111' : '#E3E3E6',
       dateGo: () => { if (dSame) return this.setState({ fDate: null, sheet: null, txN: 10 }); if (!dq.length) return; this.setState({ fDate: [dq[0], dq[1] || dq[0]], sheet: null, txN: 10 }); },
       hasSplit: splits.length > 0, splitViews,
+      sTxd: inApp && sub === 'txd', txdBack: () => this.setState({ sub: S.txFrom || null }),
+      txdName: txd.name, txdIcon: 'ph-fill ' + CAT[txd.cat], txdIc: tdin ? '#16B96C' : '#3381FF', txdIcBg: tdin ? '#E3F8EE' : '#EFF5FD', txdAmt: (tdin ? '+⃃ ' : '⃃ ') + n2(Math.abs(txd.amt)), txdAmtFg: tdin ? '#16B96C' : '#111',
+      txdMeta: `${dLong(txd.d)} · ${BANKS[tdk][0]}`,
+      txdRows: [['Status', 'Completed'], ['Category', txd.cat], ['Account', `${tdac[0]} •••• ${tdac[1]}`], ['Type', tdin ? 'Incoming' : 'Outgoing']].map(([l, r], i) => ({ l, r, bd: i ? '1px solid #E3E6EB' : 'none' })),
+      txdOffer: !!tdKey && !tdRw && rwAv >= 100, txdDone: !!tdRw, txdNoLimit: !!tdKey && !tdRw && rwAv < 100, rwNextDate: PAYDAYS[0],
+      rwPaid: `Already paid · ${dShort(txd.d)}`, rwUpTo: n0(rwCan), rwPer: n0(rwP.per), rwBars: PAYDAYS.map((d, i) => ({ amt: n0(rwP.per), mon: d.split(' ')[1], bg: i === 0 ? '#FF6757' : '#FFC2BB' })),
+      rwGo: () => tdKey && this.openChat('split', TX[tdKey]),
+      txdDoneTxt: tdRw ? `Rewound · ⃃ ${n0(tdRw.amount)} back` : '', txdDoneSub: tdRw ? `${tdRw.n} × ⃃${n0(this.plan(tdRw.amount, tdRw.n).per)} · first on ${PAYDAYS[tdRw.paid] || PAYDAYS[0]}, your payday` : '',
+      toRwDetail: () => this.setState({ sub: 'splitDetail', detailIdx: Math.max(0, splits.indexOf(tdRw)) }),
       availAmt: n0(Math.max(0, avail)), limitAmt: n0(LIMIT), availPct: Math.max(0, Math.round(avail / LIMIT * 100)) + '%',
       hasEligible: eligible.length > 0, eligibleN: eligible.length, eligibleText: `${eligible.length} purchases can be split together`, hasMultiHint: eligible.length >= 2,
       totalLabel: `Total across ${picked.length} bank${picked.length > 1 ? 's' : ''}, 3 Nov`, totalAmt: n2(total),
       toBalances: () => this.openDetails(false), toTxAll: () => this.setState({ sub: 'txAll', txN: 10, txLoading: false, txToEnd: false, sheet: null, fDate: null, fBanks: [], fAccs: [], fType: null }), toMulti: () => this.setState({ sub: 'multi' }), toLadder: () => this.setState({ sub: 'ladder' }),
       pop: () => { this.clear(); this.setState({ sub: null, sheet: null, txLoading: false }); },
       sBalances: inApp && sub === 'balances', balanceRows: picked.map(b => ({ name: BANKS[b][0], logo: LOGO(b), src: S.how === 'stmt' ? 'From statement' : 'Current account · updated today', amt: n2(BANKS[b][1]) })),
-      sMulti: inApp && sub === 'multi', msRows, msPer: n2(msP.per), msBack: n0(msSum), msFee: n0(msP.fee),
-      msCta: msSel.length ? `Split ${msSel.length} purchase${msSel.length > 1 ? 's' : ''}` : 'Pick a purchase', msOp: msSel.length ? 1 : 0.4,
+      sMulti: inApp && sub === 'multi', msRows, msPer: n2(msP.per), msBack: n0(msSum), msFee: n2(msP.fee),
+      msCta: msSel.length ? `Rewind ${msSel.length} purchase${msSel.length > 1 ? 's' : ''}` : 'Pick a purchase', msOp: msSel.length ? 1 : 0.4,
       msGo: () => msSel.length && this.openChat('splitMulti', msSel),
-      msOver: overK.length > 0, msOverText: overK.map(k => TX[k].name).join(', ') + ` won’t fit: you can split up to ⃃ ${n0(Math.max(0, avail))} right now.`,
+      msOver: overK.length > 0, msOverText: overK.map(k => TX[k].name).join(', ') + ` won’t fit: you can rewind up to ⃃ ${n0(Math.max(0, avail))} right now.`,
       sLadder: inApp && sub === 'ladder', ladderChecks, toProgress: () => this.setState({ sub: 'progress' }), sProgress: inApp && sub === 'progress', toFirstSplit: e => { e.stopPropagation(); this.setState({ sub: 'splitDetail', detailIdx: 0 }); },
       toC2: () => this.setState({ sub: 'c2' }), toC5: () => this.setState({ sub: 'c5', c5: 0, c5Moved: false }),
       phaseRows: [['c1', 'Noor pays the school for you', 'You pay back on paydays', 'Phase 2'], ['c2', 'Autopay on payday', 'No reminders to remember', 'Phase 2'], ['c4', 'Big bills on autopilot', 'Rent, school, insurance', 'Phase 2'], ['c5', 'Payday plan', 'Which account pays, and when', 'Phase 2'], ['c3', 'Split and keep your cushion', 'With a savings partner', 'Phase 3'], ['c6', 'Split at partner checkout', 'Inside partner apps', 'Phase 3']].map(([k, t, s, tag]) => ({ t, s, tag, onTap: () => this.setState({ sub: k, c1Done: false, c3Done: false, c5: 0, c5Moved: false, c6Done: false }) })),
