@@ -18127,6 +18127,7 @@ class Component extends DCLogic {
       ['Money · new', [['Money', 'app:money:', () => this.app('money')], ['Transactions', 'tx:', txJ({})]]],
       ['Rewind', [['Purchase · Rewind offer', 'app:money:txd', () => this.app('money', { sub: 'txd', txId: schoolTx, txFrom: null, splits: [] })], ['Rewind chat', 'chat:split-school', rwChat('school', { splits: [] })], ['Money · with Rewind', 'app:money:rw', () => this.app('money', presetSplit())], ['Rewind details', 'app:money:splitDetail', () => this.app('money', { ...presetSplit(), sub: 'splitDetail', detailIdx: 0 })], ['How your limit grows', 'app:money:ladder', () => this.app('money', { ...presetSplit(), sub: 'ladder' })], ['Sharaf DG + IKEA', 'chat:split-sharaf', rwChat('sharaf', { splits: [] })], ['Rewind them together', 'app:money:multi', () => this.app('money', { sub: 'multi', splits: [], msSel: ['sharaf', 'ikea'] })]]],
       ['More chats', [['Get more', 'chat:getmore', chatJump('getmore')], ['Plan ahead', 'chat:rent', chatJump('rent')], ['Coffee challenge', 'chat:coffee', chatJump('coffee', 'AED 420')], ['Careem this week', 'chat:careem', chatJump('careem')]]],
+      ['You', [['Noor progress', 'app:you:progress', () => this.app('you', { sub: 'progress' })]]],
     ];
     const flowMap = groups.map(([title, items]) => ({ title, items: items.map(([label, key, fn]) => ({ label, onTap: fn, bg: curKey === key ? '#fff' : 'transparent', fg: curKey === key ? '#111' : '#5F6670' })) }));
 
